@@ -1,0 +1,1 @@
+{"model": "model/0805240519.h5", "epochs": 15, "batch_size": 512, "learning_rate": 0.002, "hsv_tranformation": false, "lr_scheduler": true, "test_acc": 0.9838012301321478}
