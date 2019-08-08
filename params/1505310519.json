@@ -1,1 +1,0 @@
-{"model": "model/1505310519.h5", "epochs": 15, "batch_size": 512, "learning_rate": 0.002, "activation": "relu", "BN": true, "dropout": false, "relu_first": true, "hsv_tranformation": false, "lr_scheduler": true, "test_acc": 0.991535229279581}
