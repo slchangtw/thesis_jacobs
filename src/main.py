@@ -29,10 +29,12 @@ if __name__ == '__main__':
     train_dir = 'data/input/Training/'
     test_dir = 'data/input/Test/'
     
-    train_datagen = ImageDataGenerator(rescale=1./255 
+    train_datagen = ImageDataGenerator(rescale=1./255, 
                                        validation_split=0.05)
+                                       #preprocessing_function=rgb_to_hsv)
 
     test_datagen = ImageDataGenerator(rescale=1./255)
+                                      #preprocessing_function=rgb_to_hsv)
     
     train_generator = train_datagen.flow_from_directory(
         train_dir,
@@ -59,27 +61,27 @@ if __name__ == '__main__':
     model = Sequential()
 
     model.add(Conv2D(32, (3, 3), input_shape=(IMAGE_HEIGHT, IMAGE_WIDTH, IMAGE_CHANNELS), padding='same'))
-    model.add(Activation('relu'))
     model.add(BatchNormalization())
+    model.add(Activation('relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     #model.add(Dropout(0.2))
     
 
     model.add(Conv2D(64, (3, 3), padding='same'))
-    model.add(Activation('relu'))
     model.add(BatchNormalization())
+    model.add(Activation('relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     #model.add(Dropout(0.2))
     
     model.add(Conv2D(32, (3, 3), padding='same'))
-    model.add(Activation('relu'))
     model.add(BatchNormalization())
+    model.add(Activation('relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     #model.add(Dropout(0.2))
     
     model.add(Conv2D(64, (3, 3), padding='same'))
-    model.add(Activation('relu'))
     model.add(BatchNormalization())
+    model.add(Activation('relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     #model.add(Dropout(0.2))
 
@@ -91,7 +93,7 @@ if __name__ == '__main__':
     model.add(Dense(num_classes, activation='softmax'))
     
     # callback list
-    st = datetime.now().strftime('%H%m%d%m%y')
+    st = datetime.now().strftime('%H%m_%d%m%y')
 
     callbacks_list = [
             ModelCheckpoint(
@@ -133,7 +135,7 @@ if __name__ == '__main__':
         'activation': 'relu',
         'BN': True,
         'dropout': False,
-        'relu_first': True,
+        'relu_first': False,
         'hsv_tranformation': True,
         'lr_scheduler': False,
         'test_acc': score[1]
