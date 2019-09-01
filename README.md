@@ -40,9 +40,7 @@ Resultsof this study showed that the best-performing classification model achiev
 | Dropout (rate: 0.2)                                           | -                      |
 | Softmax                                                       | 95 × 1                 |
 
-The table below shows the difference of the proposed models. roadly speaking, the settings differed in which regularization techniques and which activation functions were used. HSV transformation was also applied in the the second and the fifth model. Furthermore, models (model 1 and model 3) with different orders of batch normalization and ReLU were compared. A learning rate scheduler was used to change the learning rate as the training progressed. In model 6 and 10, a simple scheduler was employed:
-
-Scheduler(epoch) = \frac{learning\ rate}{1 + epoch}, so the learning decreased as the epoch increased.
+The table below shows the difference of the proposed models. roadly speaking, the settings differed in which regularization techniques and which activation functions were used. HSV transformation was also applied in the the second and the fifth model. Furthermore, models (model 1 and model 3) with different orders of batch normalization and ReLU were compared. A learning rate scheduler was used to change the learning rate as the training progressed.
 
 |          | Configuration                                       |
 |----------|-----------------------------------------------------|
@@ -65,9 +63,9 @@ The following table lists values of the hyperparameters, which were given before
 | Epochs         | 10 or 15 |
 | Learning rate  | 0.02     |
 
-# Model Results
+## Model Results
 
-The training dataset was firstly split into two parts, 95% and 5%, and the smaller part was used as the validation set. The following plots show the training and validation performance of the 10 models (1st row: model 1-4, 2nd row: 5-8, 3rd row: 9-10).  The training and validation accuracy in most models plateaued after the 4th epoch and even started to drop after the 6th epoch.
+The training dataset was firstly split into two parts, 95% and 5%, and the smaller part was used as the validation set. The following plots show the training and validation performance of the 10 models. The training and validation accuracy in most models plateaued after the 4th epoch and even started to drop after the 6th epoch.
 
 <img src="data/output/acc_model_1.png" alt="drawing" width="200"/>
 <img src="data/output/acc_model_2.png" alt="drawing" width="200"/>
@@ -95,7 +93,7 @@ The following table shows  the  accuracy  of  the  10  models  on  the  test  da
 | model 9  | 99.22%   | 99.28%    | 99.23% | 99.20%    |
 | model 10 | 98.40%   | 99.50%    | 99.44% | 99.39%    |
 
-# Investigation of the Results
+## Investigation of the Results
 
 The following figure compares the accuracy in each class of the 10 models. In the best-performing  model, namely, model 1, the class with the lowest accuracy was apple red yellow 1, and the accuracy was 83.53%, while model 9 and model 10 had 100% accuracy in this class.
 
@@ -104,3 +102,19 @@ The following figure compares the accuracy in each class of the 10 models. In th
 SHAP was employed in thus studyto account for how the model made the predictions. As noted previously, images of apple red yellow 1 were mostly misclassified into apple  golden 1. The reason for the errors could be attributed to the yellow area. The figure below displays that theyellow area contributed positive probabilities to the class apple golden 1, while thered part in the image of fruit decreased the probability.  Furthermore, the larger theyellow area was, the more red regions the image had.
 
 <img src="data/output/shap.jpg" width="400"/>
+
+# Custom Darknet
+
+The multi-fruit images were firstly augmented by flipping, rotating and cropping and annotated using [labelImg](https://github.com/tzutalin/labelImg). The annotated images can be downloaded [here](http://tiny.cc/pr0xaz). 
+
+The custom Darknet followed the settings from [AlexeyAB/darknet](https://github.com/AlexeyAB/darknet), and the results are displayed below.
+
+<img src="data/output/apple_apricot_nectarine_peach_peach(flat)_pomegranate_pear_plum.jpg" alt="drawing" width="300"/>
+<img src="data/output/apple_apricot_peach_peach(flat)_pomegranate_pear_plum_3.jpg" alt="drawing" width="300"/>
+<img src="data/output/apple_grape2.jpg" alt="drawing" width="300"/>
+<img src="data/output/cocos_kiwi_orange_dates_salak_plum_tamarilo_maracuja3.jpg" alt="drawing" width="300"/>
+
+<img src="data/output/raspberries4.jpg" alt="drawing" width="300"/>
+<img src="data/output/raspberries6.jpg" alt="drawing" width="300"/>
+<img src="data/output/raspberries7.jpg" alt="drawing" width="300"/>
+<img src="data/output/raspberries8.jpg" alt="drawing" width="300"/>
