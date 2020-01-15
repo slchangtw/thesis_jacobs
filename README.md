@@ -1,12 +1,12 @@
 # Fruit classification and detection using deep convolutional models
 
-This study aimed to recognize and dectect the images in [Fruit 360](https://www.kaggle.com/moltean/fruits) (The one released on  16.01.2019 was used).
+This study aimed to recognize and detect the images in [Fruit 360](https://www.kaggle.com/moltean/fruits) (The one released on  16.01.2019 was used).
 The goals of this research are hence twofolds: 
 (1) to develop a fruit image classifier using the single-fruit images; and
 (2) to build a fruit image detector using the multi-fruit images. 
-To carry outthe classification task, 10 CNN-based classification models were proposed. Moreover, this study introduced *SHapley Additive exPlanations* 
+To carry out the classification task, 10 CNN-based classification models were proposed. Moreover, this study introduced *SHapley Additive exPlanations* 
 to explain the model predictions. To build the detector, a CNN-based detection algorithm *you only look once* was employed in light of its accuracy and speed in previous work. 
-Resultsof this study showed that the best-performing classification model achieved 99.64% accuracy and 99.63% F1 score on the test dataset.
+Results of this study showed that the best-performing classification model achieved 99.64% accuracy and 99.63% F1 score on the test dataset.
 
 # Classification Models
 
@@ -40,7 +40,7 @@ Resultsof this study showed that the best-performing classification model achiev
 | Dropout (rate: 0.2)                                           | -                      |
 | Softmax                                                       | 95 × 1                 |
 
-The table below shows the difference of the proposed models. roadly speaking, the settings differed in which regularization techniques and which activation functions were used. HSV transformation was also applied in the the second and the fifth model. Furthermore, models (model 1 and model 3) with different orders of batch normalization and ReLU were compared. A learning rate scheduler was used to change the learning rate as the training progressed.
+The table below shows the difference of the proposed models. Broadly speaking, the settings differed in which regularization techniques and which activation functions were used. HSV transformation was also applied in the the second and the fifth model. Furthermore, models (model 1 and model 3) with different orders of batch normalization and ReLU were compared. A learning rate scheduler was used to change the learning rate as the training progressed.
 
 |          | Configuration                                       |
 |----------|-----------------------------------------------------|
@@ -55,7 +55,7 @@ The table below shows the difference of the proposed models. roadly speaking, th
 | Model 9  | LRelu (0.3) + Batch normalization                   |
 | Model 10 | LRelu (0.5) + learning rate scheduler               |
 
-The following table lists values of the hyperparameters, which were given before trainingand not trainable. The hyperparameters remained the same in all the proposed models, except for the number epochs. If the learning rate scheduler was used, the number of epochs was 15.
+The following table lists values of the hyper-parameters, which were given before training and not trainable. The hyper-parameters remained the same in all the proposed models, except for the number epochs. If the learning rate scheduler was used, the number of epochs was 15.
 
 | Hyperparameter | Value    |
 |----------------|----------|
@@ -99,7 +99,7 @@ The following figure compares the accuracy in each class of the 10 models. In th
 
 <img src="data/output/acc_summary.png"  width="400"/>
 
-SHAP was employed in thus studyto account for how the model made the predictions. As noted previously, images of apple red yellow 1 were mostly misclassified into apple  golden 1. The reason for the errors could be attributed to the yellow area. The figure below displays that theyellow area contributed positive probabilities to the class apple golden 1, while thered part in the image of fruit decreased the probability.  Furthermore, the larger theyellow area was, the more red regions the image had.
+SHAP was employed in thus study to account for how the model made the predictions. As noted previously, images of apple red yellow 1 were mostly misclassified into apple  golden 1. The reason for the errors could be attributed to the yellow area. The figure below displays that the yellow area contributed positive probabilities to the class apple golden 1, while the red part in the image of fruit decreased the probability.  Furthermore, the larger the yellow area was, the more red regions the image had.
 
 <img src="data/output/shap.jpg" width="400"/>
 
